@@ -9,7 +9,7 @@ public class Fibonacci {
         int n = scanner.nextInt();
         int first = 0, second = 1;
 
-        System.out.println("Fibonacci Sequence up to " + n + " terms: );
+        System.out.print("Fibonacci Sequence up to " + n + " terms: " );
 
         for (int i = 1; i <= n; i++) {
             System.out.print(first + " ");//magssilbing loop hanggang makuha yung inenter na number 
