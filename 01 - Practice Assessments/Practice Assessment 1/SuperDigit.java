@@ -26,7 +26,6 @@ public class SuperDigit {
             num = String.valueOf(sum);
         }
 
-        System.out.println("Original number: " + Orig);
-        System.out.println("Super digit: " + num);
+        System.out.println("Super Digit of " + Orig + ": " + num);
     }
 }
