@@ -1,54 +1,58 @@
-import java.util.HashMap;
 import java.util.Scanner;
 
 public class TwoSum {
-    public static int[] twoSum(int[] nums, int target) {
-        // HashMap to store: value -> index
-        HashMap<Integer, Integer> map = new HashMap<>();
-        
-        // Loop through each number in the array
-        for (int i = 0; i < nums.length; i++) {
-            // Calculate what number we need to reach target
-            int complement = target - nums[i];
-            
-            // Check if complement exists in our map
-            if (map.containsKey(complement)) {
-                // Found it! Return both indices
-                return new int[] { map.get(complement), i };
-            }
-            
-            // Store current number and its index in map
-            map.put(nums[i], i);
-        }
-        
-        // No solution found (shouldn't happen per problem constraints)
-        return new int[] { -1, -1 };
-    }
-    
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+        Scanner input = new Scanner(System.in);
         
-        // Get array size
-        System.out.print("Enter array size: ");
-        int n = scanner.nextInt();
+        // Step 1: Get the numbers from user
+        System.out.println("=== TWO SUM FINDER ===");
+        System.out.println("This program finds two numbers that add up to your target!\n");
         
-        // Create and populate array
-        int[] nums = new int[n];
-        System.out.print("Enter array elements: ");
-        for (int i = 0; i < n; i++) {
-            nums[i] = scanner.nextInt();
+        System.out.print("How many numbers do you have? ");
+        int size = input.nextInt();
+        
+        // Create an array to store the numbers
+        int[] numbers = new int[size];
+        
+        System.out.println("Enter " + size + " numbers:");
+        for (int i = 0; i < size; i++) {
+            System.out.print("Number " + (i+1) + ": ");
+            numbers[i] = input.nextInt();
         }
         
-        // Get target
-        System.out.print("Enter target: ");
-        int target = scanner.nextInt();
+        // Step 2: Get the target sum
+        System.out.print("\nWhat is your target sum? ");
+        int target = input.nextInt();
         
-        // Find solution
-        int[] result = twoSum(nums, target);
+        // Step 3: Find two numbers that add up to target
+        System.out.println("\n--- Searching for solution ---");
+        boolean found = false;
         
-        // Display result
-        System.out.println("Output: [" + result[0] + "," + result[1] + "]");
+        // Try every possible pair
+        for (int i = 0; i < size; i++) {
+            for (int j = i + 1; j < size; j++) {
+                
+                // Show what we're checking
+                System.out.println("Checking: " + numbers[i] + " + " + numbers[j] + " = " + (numbers[i] + numbers[j]));
+                
+                // Check if they add up to target
+                if (numbers[i] + numbers[j] == target) {
+                    System.out.println("\n✓ FOUND IT!");
+                    System.out.println("Position " + i + " (value: " + numbers[i] + ")");
+                    System.out.println("Position " + j + " (value: " + numbers[j] + ")");
+                    System.out.println(numbers[i] + " + " + numbers[j] + " = " + target);
+                    found = true;
+                    break; // Stop searching
+                }
+            }
+            if (found) break; // Exit outer loop too
+        }
         
-        scanner.close();
+        // If no solution found
+        if (!found) {
+            System.out.println("\n✗ No two numbers add up to " + target);
+        }
+        
+        input.close();
     }
 }
