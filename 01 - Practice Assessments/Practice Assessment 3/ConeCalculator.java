@@ -1,36 +1,36 @@
 import java.util.Scanner;
 
-public class Main {
+public class ConeCalculator {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        
+
         // Get input from user
         System.out.print("Diameter of the cone's base: ");
         double diameter = sc.nextDouble();
-        
+
         System.out.print("Height of the cone: ");
         double height = sc.nextDouble();
-        
+
         // Calculate radius from diameter
         double radius = diameter / 2.0;
-        
+
         // slant height = sqrt(r² + h²)
         double slantHeight = Math.sqrt(radius * radius + height * height);
-        
+
         // Calculate surface area using formula: π(r + h² + r²)
         // Note: The formula should be π(r² + r*l) where l is slant height
         // Surface Area = π * r² + π * r * l = π * r * (r + l)
         double surfaceArea = Math.PI * radius * (radius + slantHeight);
-        
+
         // Calculate volume using formula: π*r²*(h/3)
         double volume = Math.PI * radius * radius * height / 3.0;
-        
+
         // Display results rounded to 4 decimal places
         System.out.printf("Surface Area is %.4f%n", surfaceArea);
         System.out.printf("Volume is %.4f%n", volume);
-        
+
         sc.close();
     }
 }
 
-//credits to the formula given in the sheet and from co-pilot
+// credits to the formula given in the sheet and from co-pilot
