@@ -1,8 +1,6 @@
-package main;
+class Yrish {
+  public static void main(String[] args) {
+    System.out.println("Hi,I am Yrish");
+  }
 
-public class User {
-
-  private int userID;
-  private String userName;
-  private String
-}//I will edit this huhuhu
+}
